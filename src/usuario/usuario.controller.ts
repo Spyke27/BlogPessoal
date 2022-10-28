@@ -3,7 +3,10 @@ import { UsuarioService } from './usuario.service';
 import { Usuario } from './entities/usuario.entity';
 import { Put, UseGuards } from '@nestjs/common/decorators';
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Usuario')
+@ApiBearerAuth()
 @Controller('usuarios')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
@@ -38,3 +41,7 @@ export class UsuarioController {
     return this.usuarioService.update(usuario)
   }
 }
+function ApiBeareAuth() {
+  throw new Error('Function not implemented.');
+}
+
